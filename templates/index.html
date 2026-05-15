@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>CT Scan Disease Detection</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>CT Scan Disease Detection</h1>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="file" required>
+
+        <button type="submit">Check Disease Level</button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+
+        <h2>Disease Level: {{ prediction }}</h2>
+
+        <h3>Confidence: {{ confidence }}%</h3>
+
+        <p>{{ message }}</p>
+
+        <img src="{{ image_path }}" width="300">
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
